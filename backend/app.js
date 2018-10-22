@@ -1,12 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const path = require('path');
 
-const mongoose = require('mongoose');
+const postsRoutes = require("./routes/posts");
 
-const postRoutes = require('./routes/posts');
 const app = express();
 
-mongoose.connect('mongodb+srv://<USERNAME>:<PASSWORD>@cluster0-xriam.mongodb.net/test?retryWrites=true')
+mongoose.connect('<ENTER STRING>')
 .then(() => {
   console.log('connected to the database')
 }).catch(() => {
@@ -15,15 +16,22 @@ mongoose.connect('mongodb+srv://<USERNAME>:<PASSWORD>@cluster0-xriam.mongodb.net
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/images", express.static(path.join("backend/images")));
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.setHeader('Access-Control-Allow-Methods','GET,POST,PATCH,DELETE,OPTIONS,PUT' );
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
   next();
 });
 
-app.use('/api/posts', postRoutes);
+app.use("/api/posts", postsRoutes);
 
 
  module.exports = app;
