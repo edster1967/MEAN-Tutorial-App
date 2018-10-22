@@ -8,7 +8,7 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-mongoose.connect('mongodb+srv://mean_user_1:passw0rd@cluster0-xriam.mongodb.net/Mean-Tutorial_App?retryWrites=true')
+mongoose.connect('<ENTER DB STRING?')
 .then(() => {
   console.log('connected to the database')
 }).catch(() => {
