@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 const path = require('path');
 
 const postsRoutes = require("./routes/posts");
+const userRoutes = require("./routes/user");
 
 const app = express();
 
-mongoose.connect('<ENTER DB STRING>')
+mongoose.connect('mongodb+srv://mean_user_1:passw0rd@cluster0-xriam.mongodb.net/Mean-Tutorial_App?retryWrites=true')
 .then(() => {
   console.log('connected to the database')
 }).catch(() => {
@@ -22,7 +23,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -32,7 +33,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/posts", postsRoutes);
-
+app.use("/api/user", userRoutes);
 
  module.exports = app;
 
