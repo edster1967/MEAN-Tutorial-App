@@ -7,7 +7,7 @@ const postsRoutes = require("./routes/posts");
 
 const app = express();
 
-mongoose.connect('<ENTER STRING>')
+mongoose.connect('<ENTER DB STRING>')
 .then(() => {
   console.log('connected to the database')
 }).catch(() => {
