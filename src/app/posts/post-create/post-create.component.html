@@ -1,6 +1,7 @@
 <div class="mat-typography">
     <div class="post-hero">
         <h1 class="mat-display-1">Create a Post</h1>
+        <p>Please add a Title, image, and comment to post</p>
     </div>
     <div>
         <mat-card>
@@ -23,6 +24,7 @@
                 </mat-form-field>
 
                 <button mat-raised-button color="accent" type="submit">Save Post</button>
+                <a mat-button color="primary" [routerLink]="['/']">Cancel</a>
             </form>
         </mat-card>
     </div>

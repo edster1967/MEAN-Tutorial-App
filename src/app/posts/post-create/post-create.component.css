@@ -28,3 +28,11 @@ input[type="file"] {
 .post-hero {
     padding-bottom: 1em;
 }
+
+mat-form-field {
+    padding: 2em 0 2em 0;
+}
+
+button {
+    margin-right: 1em;
+}
